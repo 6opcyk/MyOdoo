@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+	<record id = "privider_view" model = "ir.ui.view">
+		<field name = "name">company_information</field>
+		<field name = "model">provider</field>
+		<field name = "arch" type = "xml">
+			<form>
+				<sheet>
+				<p><h2>ООО "АгроТорг"</h2></p>
+				<table border = "1" width="70%">
+				<tr>
+				<td width="10%" bgcolr = "#666633"><h5>Сайт компании:</h5></td>
+				<td width="20%" bgcolr = "#666633"></td>
+				<td width="20%" bgcolr = "#999966"><a href="site.com"><h6>Перейти на сайт</h6></a></td>
+				</tr>
+				</table>
+				
+				<p align="center" ><h2>Информация о компании</h2></p>
+				<group>
+					<group>
+						<field name = "reg_region" string = "Регион регистрации"/>
+						<field name = "date_reg" string = "Дата регистрации"/>
+						<field name = "email" string = "E-mail поставщика"/>
+						<field name = "telephone" string = "Телефон поставщика"/>
+						<field name = "inn" string = "ИНН / КПП"/>
+					</group>
+					<group>
+						<field name = "circulation" string = "Оборот за последний год"/>
+						<field name = "product" string = "Распространение продукции"/>
+						<field name = "tenders" string = "Участие в гос. тендерах"/>
+						<field name = "contracts_sum" string = "Сумма контрактов"/>
+						<field name = "warehouse" string = "Наличие склада"/>
+					</group>
+				</group>
+				
+				<p align="center" ><h6>Цены на поставляемые товары:</h6></p>
+				<field name = "products">
+					<tree>
+						<field name = "product" string = "Товар"/>
+						<field name = "identify" string = "ID"/>
+						<field name = "call" string = "Вызов"/>
+						<field name = "date" string = "Дата запроса"/>
+						<field name = "status" string = "Статус"/>
+						<field name = "answer" string = "Ответ"/>
+						<field name = "price" string = "Цена"/>
+						<field name = "comment" string = "Комментарий аналитика"/>
+					</tree>
+				</field>
+				<table width="50%">
+					<form>
+					<p align="center" ><h6>Индекс добросовестности поставщика:</h6></p>
+					  <tr>
+						<td><b>Контракты</b></td>
+						<td><b>Количество</b></td>
+						<td><b>Объем</b></td>
+					  </tr>
+					  <tr>
+						<td><b>Заключенные</b></td>
+						<td><field name = "contracts_count"/></td>
+						<td><field name = "contracts_amount"/></td>
+					  </tr>
+					  <tr>
+						<td><b>Своевременно исполненные</b></td>
+						<td><field name = "intime_count"/></td>
+						<td><field name = "intime_amount"/></td>
+					  </tr>
+					  <tr>
+						<td><b>Расторгнутые</b></td>
+						<td><field name = "cancelled_count"/></td>
+						<td><field name = "cancelled_amount"/></td>
+					  </tr>
+					 </form>
+				</table>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	
+
+	<record id="custom_action" model="ir.actions.act_window">
+        <field name="name">Поставщики</field>
+        <field name="res_model">provider</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form, tree</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click here to create new item !
+            </p>
+        </field>
+    </record>
+    <!--   Create Top Menu  -->
+    <menuitem name="Providers" id="custom_top_menu" action="custom_action" sequence="6"/>
+</odoo>
